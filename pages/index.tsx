@@ -10,15 +10,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Wrapper>
-        <Button onClick={handleOpen}>Show Dialog</Button>
-        <Overlay isOpen={showDialog} onDismiss={handleDismiss}>
-          <Content>
-            <p>content here</p>
-            <Button onClick={handleDismiss}>Very nice.</Button>
-          </Content>
-        </Overlay>
-      </Wrapper>
+      <Wrapper>BODY HERE HAHA</Wrapper>
     </>
   );
 };
