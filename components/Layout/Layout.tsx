@@ -24,7 +24,11 @@ const Container = styled.div`
 const Content = styled.div`
   flex: 1;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
+  width: 100%;
+
+  //so that i can center the button in the middle
+  display: flex;
 `;
 
 export default Layout;

@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog';
+import { Divide as Hamburger } from 'hamburger-react';
+import NavbarMenuModal from '../NavbarMenuModal';
+import { Menu } from 'react-feather';
 
 type Props = {};
 
 const Navbar = (props: Props) => {
-  const [showDialog, setShowDialog] = React.useState(false);
-  const handleOpen = () => setShowDialog(true);
-  const handleDismiss = () => setShowDialog(false);
+  //button modal
+  const [isOpen, setOpen] = useState(false);
+
+  //modal
+  const [showMenuModal, setShowMenuModal] = useState(false);
+  const handleOpen = () => setShowMenuModal(true);
+  const handleDismiss = () => setShowMenuModal(false);
 
   return (
     <NavbarWrapper>
       <Nav>
         <h2>TITLE</h2>
-        <Button onClick={handleOpen}>Show Dialog</Button>
+        <MenuModalButtonWrapper onClick={handleOpen}>
+          <Menu size={40} strokeWidth={1} />
+        </MenuModalButtonWrapper>
       </Nav>
       {/* DIALOG */}
-      <Overlay isOpen={showDialog} onDismiss={handleDismiss}>
-        <Content>
-          <p>content here</p>
-          <Button onClick={handleDismiss}>Very nice.</Button>
-        </Content>
-      </Overlay>
+      <NavbarMenuModal isOpen={showMenuModal} onDismiss={handleDismiss} />
     </NavbarWrapper>
   );
 };
@@ -39,7 +43,6 @@ const NavbarWrapper = styled.div`
 const Nav = styled.nav`
   display: flex;
   gap: 32px;
-  height: 100%;
   align-items: center;
   font-size: 1.5rem;
   justify-content: space-between;
@@ -54,32 +57,11 @@ const LogoWrapper = styled.div`
   height: 100%;
 `;
 
-//MODAL
-const Overlay = styled(DialogOverlay)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: hsl(0deg 0% 0% /0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+const MenuModalButtonWrapper = styled.button`
+  background-color: papayawhip;
 
-const Content = styled(DialogContent)`
-  position: relative;
-  background: white;
-  border-radius: 8px;
-  width: 65%;
-
-  padding: 32px;
-`;
-
-const Button = styled.button`
-  background-color: white;
-  padding: 8px 16px;
   font-size: 1.125rem;
+  padding: 7px;
 `;
 
 export default Navbar;
