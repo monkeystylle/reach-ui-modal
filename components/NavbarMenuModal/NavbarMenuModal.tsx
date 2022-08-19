@@ -1,6 +1,7 @@
 import React from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import styled from 'styled-components';
+import { keyframes } from 'styled-components';
 import { X } from 'react-feather';
 import Hamburger from 'hamburger-react';
 
@@ -13,7 +14,6 @@ const NavbarMenuModal = ({ isOpen, onDismiss }: ImenuModal) => {
   return (
     <Overlay isOpen={isOpen} onDismiss={onDismiss}>
       <Content>
-        Content here
         <CloseButtonWrapper onClick={onDismiss}>
           <X size={35} />
         </CloseButtonWrapper>
@@ -36,8 +36,18 @@ const Overlay = styled(DialogOverlay)`
   right: 0;
   bottom: 0;
   background: hsl(220deg 5% 40% / 0.8);
+
   display: flex;
   justify-content: flex-end;
+`;
+
+const slideInRight = keyframes`
+  from {
+    transform: translateX(100%);
+  }
+  to {
+     transform: translateX(0%);
+  }
 `;
 
 const Content = styled(DialogContent)`
@@ -48,6 +58,8 @@ const Content = styled(DialogContent)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  animation: ${slideInRight} 400ms ease;
 `;
 
 const CloseButtonWrapper = styled.button`
