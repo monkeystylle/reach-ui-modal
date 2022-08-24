@@ -9,24 +9,22 @@ import { Menu } from 'react-feather';
 type Props = {};
 
 const Navbar = (props: Props) => {
-  //button modal
-  const [isOpen, setOpen] = useState(false);
-
   //modal
   const [showMenuModal, setShowMenuModal] = useState(false);
-  const handleOpen = () => setShowMenuModal(true);
-  const handleDismiss = () => setShowMenuModal(false);
 
   return (
     <NavbarWrapper>
       <Nav>
         <h2>TITLE</h2>
-        <MenuModalButtonWrapper onClick={handleOpen}>
+        <MenuModalButtonWrapper onClick={() => setShowMenuModal(true)}>
           <Menu size={40} strokeWidth={1} />
         </MenuModalButtonWrapper>
       </Nav>
       {/* DIALOG */}
-      <NavbarMenuModal isOpen={showMenuModal} onDismiss={handleDismiss} />
+      <NavbarMenuModal
+        isOpen={showMenuModal}
+        onDismiss={() => setShowMenuModal(false)}
+      />
     </NavbarWrapper>
   );
 };

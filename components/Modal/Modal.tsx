@@ -15,13 +15,7 @@ type ContentProps = {
 };
 
 const Modal = ({ isOpen, onDismiss }: IModal) => {
-  const ENTER_DURATION = '500ms';
-  const EXIT_DURATION = '250ms';
-  const ENTER_EASE = 'ease-out';
-  const EXIT_EASE = 'ease-in';
 
-  // const transitionDuration = isOpen ? ENTER_DURATION : EXIT_DURATION;
-  // const ease = isOpen ? ENTER_EASE : EXIT_EASE;
 
   console.log('ISOPEN', isOpen);
 
